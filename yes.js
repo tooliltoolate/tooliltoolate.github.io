@@ -1,15 +1,28 @@
-const showBtn = document.getElementById("show");
-const clearBtn = document.getElementById("clear");
-const output = document.getElementById("cookie-value");
+// Source - https://stackoverflow.com/a/4919931
+// Posted by Arseny
+// Retrieved 2026-10-07, License - CC BY-SA 2.5
 
-// Note that we are setting `SameSite=None;` in this example because the example
-// needs to work cross-origin.
-// It is more common not to set the `SameSite` attribute, which results in the default,
-// and more secure, value of `SameSite=Lax;`
+function get_cookies_array() {
 
-showBtn.addEventListener("click", () => {
-  output.textContent = `> ${document.cookie}`;
-});
-clearBtn.addEventListener("click", () => {
-  output.textContent = "";
-});
+    var cookies = { };
+
+    if (document.cookie && document.cookie != '') {
+        var split = document.cookie.split(';');
+        for (var i = 0; i < split.length; i++) {
+            var name_value = split[i].split("=");
+            name_value[0] = name_value[0].replace(/^ /, '');
+            cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+        }
+    }
+
+    return cookies;
+
+}
+// Source - https://stackoverflow.com/a/4919931
+// Posted by Arseny
+// Retrieved 2026-10-07, License - CC BY-SA 2.5
+
+var cookies = get_cookies_array();
+for(var name in cookies) {
+  document.write( name + " : " + cookies[name] + "<br />" );
+}
