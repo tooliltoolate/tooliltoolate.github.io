@@ -40,7 +40,7 @@ for(var name in cookies) {
 }
 
 showBtn.addEventListener("click", () => {
-  output.textContent = outputHTML;
+  output.innerHTML = outputHTML;
 });
 
 clearBtn.addEventListener("click", () => {
