@@ -26,3 +26,23 @@ var cookies = get_cookies_array();
 for(var name in cookies) {
   document.write( name + " : " + cookies[name] + "<br />" );
 }
+
+const showBtn = document.getElementById("show");
+const clearBtn = document.getElementById("clear");
+const output = document.getElementById("cookie-value");
+
+var outputHTML = "";
+
+var cookies = get_cookies_array();
+for(var name in cookies) {
+  // 3. Build the content safely
+  outputHTML += name + " : " + cookies[name] + "<br />";
+}
+
+showBtn.addEventListener("click", () => {
+  output.textContent = outputHTML;
+});
+
+clearBtn.addEventListener("click", () => {
+  output.textContent = "";
+});
